@@ -26,7 +26,7 @@ export default {
           icon: "mdi-view-dashboard",
           route: "",
           childrens: [
-            { title: "TCA", icon: "mdi-view-dashboard", route: "" },
+            { title: "TCA", icon: "mdi-view-dashboard", route: "/login" },
             { title: "TCE", icon: "mdi-view-dashboard", route: "" },
             { title: "TCW", icon: "mdi-view-dashboard", route: "" },
             { title: "NDT", icon: "mdi-view-dashboard", route: "" },

@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer permanent color="#006198" dark>
+  <v-navigation-drawer color="#006198" dark app>
     <v-img src="../assets/img/logo-white.png" alt="" class="mt-2 mb-2"></v-img>
     <v-divider></v-divider>
 
@@ -35,6 +35,7 @@
             :key="i"
             link
             class="ml-4"
+            @click="goToRoute(child.route)"
           >
             <v-list-item-icon>
               <v-icon v-text="child.icon"></v-icon>
