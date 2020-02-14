@@ -50,20 +50,6 @@
 <script>
 export default {
   props: ["items"],
-  data() {
-    return {
-      admins: [
-        ["Management", "people_outline"],
-        ["Settings", "settings"]
-      ],
-      cruds: [
-        ["Create", "add"],
-        ["Read", "insert_drive_file"],
-        ["Update", "update"],
-        ["Delete", "delete"]
-      ]
-    };
-  },
   methods: {
     goToRoute(route) {
       this.$router.push(route);
