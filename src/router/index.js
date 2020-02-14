@@ -14,6 +14,14 @@ const routes = [
     path: "/role",
     name: "role",
     component: () => import(/* webpackChunkName: "role" */ "../views/Role.vue")
+  },
+  {
+    path: "/tc/price-simulation",
+    name: "tc-price-simulation",
+    component: () =>
+      import(
+        /* webpackChunkName: "tc-price-simulation" */ "../views/TC/PriceSimulation.vue"
+      )
   }
 ];
 

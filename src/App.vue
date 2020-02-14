@@ -1,16 +1,55 @@
 <template>
   <v-app>
-    <v-content> <router-view></router-view></v-content>
+    <v-content>
+      <navbar
+        :items="navItems"
+        v-if="$route.name !== 'login' && $route.name !== 'role'"
+      ></navbar>
+      <router-view></router-view
+    ></v-content>
   </v-app>
 </template>
 
 <script>
+import Navbar from "@/components/Navbar.vue";
+
 export default {
   name: "App",
-
-  data: () => ({
-    //
-  })
+  components: {
+    Navbar
+  },
+  data() {
+    return {
+      navItems: [
+        {
+          title: "COGS",
+          icon: "mdi-view-dashboard",
+          route: "",
+          childrens: [
+            { title: "TCA", icon: "mdi-view-dashboard", route: "" },
+            { title: "TCE", icon: "mdi-view-dashboard", route: "" },
+            { title: "TCW", icon: "mdi-view-dashboard", route: "" },
+            { title: "NDT", icon: "mdi-view-dashboard", route: "" },
+            { title: "Calibration", icon: "mdi-view-dashboard", route: "" }
+          ]
+        },
+        {
+          title: "Pricing Simulation",
+          icon: "mdi-receipt",
+          route: "",
+          childrens: [
+            { title: "TCA", icon: "mdi-receipt", route: "" },
+            { title: "TCE", icon: "mdi-receipt", route: "" },
+            { title: "TCW", icon: "mdi-receipt", route: "" },
+            { title: "NDT", icon: "mdi-receipt", route: "" },
+            { title: "Calibration", icon: "mdi-receipt", route: "" }
+          ]
+        },
+        { title: "User Management", icon: "mdi-account-circle", route: "" },
+        { title: "Log Out", icon: "mdi-power", route: "/logout" }
+      ]
+    };
+  }
 };
 </script>
 
