@@ -5,18 +5,25 @@
         :items="navItems"
         v-if="$route.name !== 'login' && $route.name !== 'role'"
       ></navbar>
-      <router-view></router-view
-    ></v-content>
+      <div>
+        <toolbar
+          v-if="$route.name !== 'login' && $route.name !== 'role'"
+        />
+        <router-view></router-view>
+      </div>
+    </v-content>
   </v-app>
 </template>
 
 <script>
 import Navbar from "@/components/Navbar.vue";
+import Toolbar from "@/components/Toolbar.vue";
 
 export default {
   name: "App",
   components: {
-    Navbar
+    Navbar,
+    Toolbar,
   },
   data() {
     return {
