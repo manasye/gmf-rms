@@ -30,6 +30,14 @@ const routes = [
       import(
         /* webpackChunkName: "tc-price-simulation" */ "../views/TC/COGS/TCA/TCA.vue"
       )
+  },
+  {
+    path: "/tc/cogs/tca/new",
+    name: "tc-cogs-tca-new",
+    component: () =>
+      import(
+        /* webpackChunkName: "tc-price-simulation" */ "../views/TC/COGS/TCA/NewItem.vue"
+      )
   }
 ];
 

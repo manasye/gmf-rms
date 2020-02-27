@@ -11,7 +11,7 @@
         <v-icon>cloud_upload</v-icon>
         <p>Upload</p>
       </v-btn>
-      <v-btn color="#82B900" class="button">
+      <v-btn color="#82B900" class="button" @click="goToNewItem">
         <v-icon>add</v-icon>
         <p>New Item</p>
       </v-btn>
@@ -26,13 +26,18 @@ export default {
       items: [
         {
           text: 'COGS',
-          disabled: false,
+          disabled: true,
         },
         {
           text: 'TCA',
           disabled: false,
         },
       ],
+    }
+  },
+  methods: {
+    goToNewItem() {
+      this.$router.push('/tc/cogs/tca/new');
     }
   }
 }
