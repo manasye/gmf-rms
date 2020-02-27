@@ -1,5 +1,6 @@
 <template>
   <div class="page">
+    <view-column />
     <v-breadcrumbs :items="items" />
     <h1 class="page-title">COGS TCA</h1>
     <div class="main-actions">
@@ -20,7 +21,12 @@
 </template>
 
 <script>
+import ViewColumn from './ViewColumn';
+
 export default {
+  components: {
+    ViewColumn,
+  },
   data() {
     return {
       items: [
