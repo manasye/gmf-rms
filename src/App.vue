@@ -26,7 +26,7 @@ export default {
           icon: "mdi-view-dashboard",
           route: "",
           childrens: [
-            { title: "TCA", icon: "mdi-view-dashboard", route: "/login" },
+            { title: "TCA", icon: "mdi-view-dashboard", route: "" },
             { title: "TCE", icon: "mdi-view-dashboard", route: "" },
             { title: "TCW", icon: "mdi-view-dashboard", route: "" },
             { title: "NDT", icon: "mdi-view-dashboard", route: "" },
@@ -38,11 +38,31 @@ export default {
           icon: "mdi-receipt",
           route: "",
           childrens: [
-            { title: "TCA", icon: "mdi-receipt", route: "" },
-            { title: "TCE", icon: "mdi-receipt", route: "" },
-            { title: "TCW", icon: "mdi-receipt", route: "" },
-            { title: "NDT", icon: "mdi-receipt", route: "" },
-            { title: "Calibration", icon: "mdi-receipt", route: "" }
+            {
+              title: "TCA",
+              icon: "mdi-receipt",
+              route: "/tc/price-simulation/tc?type=a"
+            },
+            {
+              title: "TCE",
+              icon: "mdi-receipt",
+              route: "/tc/price-simulation/tc?type=e"
+            },
+            {
+              title: "TCW",
+              icon: "mdi-receipt",
+              route: "/tc/price-simulation/tc?type=w"
+            },
+            {
+              title: "NDT",
+              icon: "mdi-receipt",
+              route: "/tc/price-simulation/ndt"
+            },
+            {
+              title: "Calibration",
+              icon: "mdi-receipt",
+              route: "/tc/price-simulation/calibration"
+            }
           ]
         },
         { title: "User Management", icon: "mdi-account-circle", route: "" },
@@ -67,5 +87,19 @@ body,
 .v-application {
   font-family: "circularstd", sans-serif !important;
   overflow-x: hidden;
+}
+.primary-color {
+  color: #006198;
+}
+.header-text {
+  text-transform: uppercase;
+  color: #006198;
+  font-weight: bold;
+}
+.stick {
+  width: 700px !important;
+}
+.stick-2 {
+  width: 300px !important;
 }
 </style>

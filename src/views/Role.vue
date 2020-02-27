@@ -1,18 +1,18 @@
 <template>
   <div class="role-container" align="center">
     <div class="center">
-      <h1 class="mb-10">Welcome!</h1>
-      <h3 class="mb-8">
+      <h2 class="mb-10">Welcome!</h2>
+      <h4 class="mb-8">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
         adipisci architecto assumenda autem dicta dolor ducimus, eveniet in
         itaque minus molestias odio placeat quae quasi quia repellendus sit sunt
         tempore!
-      </h3>
+      </h4>
       <v-row>
         <v-col cols="3" v-for="r in roles" :key="r.code" class="role-choose">
           <v-icon color="#fff" class="mb-3 logo">account_box</v-icon>
-          <h1 class="mb-3">{{ r.code }}</h1>
-          <h3>{{ r.name }}</h3></v-col
+          <h2 class="mb-3">{{ r.code }}</h2>
+          <h5>{{ r.name }}</h5></v-col
         >
       </v-row>
       <p class="mt-10">
