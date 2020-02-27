@@ -22,6 +22,12 @@ const routes = [
     redirect: { name: "tc-cogs-tca" },
     children: tcRoutes,
   },
+  {
+    path: "/tg",
+    component: () => import(/* webpackChunkName: "TC" */ "../views/TG/TG.vue"),
+    // redirect: { name: "tg-cogs-tca" },
+    // children: tcRoutes,
+  },
 ];
 
 const router = new VueRouter({

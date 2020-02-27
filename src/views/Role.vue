@@ -9,7 +9,13 @@
         tempore!
       </h3>
       <v-row>
-        <v-col cols="3" v-for="r in roles" :key="r.code" class="role-choose">
+        <v-col
+          cols="3"
+          v-for="r in roles"
+          :key="r.code"
+          class="role-choose"
+          @click="goToRoute(r.route)"
+        >
           <v-icon color="#fff" class="mb-3 logo">account_box</v-icon>
           <h1 class="mb-3">{{ r.code }}</h1>
           <h3>{{ r.name }}</h3></v-col
@@ -27,12 +33,17 @@ export default {
   data() {
     return {
       roles: [
-        { code: "TC", name: "COMPONENT SERVICES" },
-        { code: "TG", name: "LOGISTIC, BONDED & MATERIAL SERVICES" },
-        { code: "TB", name: "WIDE BODY BASE MAINTENANCE" },
-        { code: "TJ", name: "NARROW BODY BASE MAINTENANCE" }
+        { code: "TC", name: "COMPONENT SERVICES", route: "/tc" },
+        { code: "TG", name: "LOGISTIC, BONDED & MATERIAL SERVICES", route: "/tg" },
+        { code: "TB", name: "WIDE BODY BASE MAINTENANCE", route: "/tc" },
+        { code: "TJ", name: "NARROW BODY BASE MAINTENANCE", route: "/tc" }
       ]
     };
+  },
+  methods: {
+    goToRoute(route) {
+      this.$router.push(route);
+    }
   }
 };
 </script>
