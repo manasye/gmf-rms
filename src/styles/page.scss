@@ -1,0 +1,30 @@
+@import '_variables';
+
+.v-breadcrumbs {
+  padding: 5px 0;
+}
+
+.page {
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+}
+
+.page-title {
+  color: $blue;
+}
+
+.main-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  .button {
+    color: white;
+    margin-left: 8px;
+  }
+
+  .button p {
+    margin-left: 5px;
+    margin-bottom: 0;
+  }
+}

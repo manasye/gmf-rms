@@ -33,7 +33,7 @@ export default {
           icon: "mdi-view-dashboard",
           route: "",
           childrens: [
-            { title: "TCA", icon: "mdi-view-dashboard", route: "/login" },
+            { title: "TCA", icon: "mdi-view-dashboard", route: "/tc/cogs/tca" },
             { title: "TCE", icon: "mdi-view-dashboard", route: "" },
             { title: "TCW", icon: "mdi-view-dashboard", route: "" },
             { title: "NDT", icon: "mdi-view-dashboard", route: "" },
@@ -60,19 +60,6 @@ export default {
 };
 </script>
 
-<style>
-@font-face {
-  font-family: "circularstd";
-  src: url("./assets/font/CircularStd-Book.otf");
-}
-@font-face {
-  font-family: "circularstd";
-  changesrc: url("./assets/font/CircularStd-Bold.otf");
-  font-weight: bold;
-}
-body,
-.v-application {
-  font-family: "circularstd", sans-serif !important;
-  overflow-x: hidden;
-}
+<style lang="scss">
+@import './styles/global';
 </style>
