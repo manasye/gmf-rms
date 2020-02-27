@@ -50,7 +50,7 @@
         </v-col>
       </v-row>
       <div class="action">
-        <v-btn color="#82B900">Submit</v-btn>
+        <v-btn color="#82B900" @click="submit">Submit</v-btn>
       </div>
     </v-card>
   </v-dialog>
@@ -58,9 +58,10 @@
 
 <script>
 export default {
+  props: ['visible'],
   data() {
     return {
-      dialog: true,
+      dialog: false,
       selectAll: false,
       values: [
         {
@@ -126,6 +127,15 @@ export default {
       ]
     }
   },
+  created() {
+    this.dialog = this.visible;
+  },
+  methods: {
+    submit() {
+      this.$emit('values', this.values);
+      this.dialog = false;
+    }
+  },
   watch: {
     selectAll(newVal, oldVal) {
       if (newVal && !oldVal) {
@@ -138,6 +148,12 @@ export default {
         });
         if (isChange) this.values.map(r => (r.value = false));
       }
+    },
+    visible(newVal, oldVal) {
+      if (newVal) this.dialog = newVal;
+    },
+    dialog(newVal, oldVal) {
+      if (!newVal) this.$emit('onclose');
     },
     values: {
       deep: true,
