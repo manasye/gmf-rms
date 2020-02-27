@@ -17,6 +17,6 @@ body,
 }
 
 .v-btn {
-  letter-spacing: normal;
-  text-transform: initial;
+  letter-spacing: normal !important;
+  text-transform: initial !important;
 }
