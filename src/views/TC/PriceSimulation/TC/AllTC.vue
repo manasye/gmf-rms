@@ -1,24 +1,44 @@
 <template>
   <v-container>
-    <h3 class="header-text">Pricing Simulation TC{{ $route.query.type }}</h3>
-    <v-row>
-      <v-col cols="2" align-self="end">
-        <v-btn small color="primary" depressed block
-          ><v-icon left>mdi-download</v-icon>Download</v-btn
-        >
+    <h1 class="page-title text-uppercase">
+      Pricing Simulation TC{{ $route.query.type }}
+    </h1>
+    <v-row align="center" justify="center">
+      <v-col cols="6">
+        <div class="main-actions justify-content-start">
+          <v-btn color="#82B900" class="button"
+            ><v-icon>cloud_download</v-icon>
+            <p>Download</p></v-btn
+          >
+          <v-btn
+            color="#82B900"
+            class="button"
+            @click="$router.push('/tc/price-simulation/tc/new')"
+            ><v-icon>mdi-plus</v-icon>
+            <p>New Price</p></v-btn
+          >
+          <v-btn color="#82B900" class="button"
+            ><v-icon>mdi-filter</v-icon>
+            <p>Filter</p></v-btn
+          >
+          <v-btn color="#82B900" class="button"
+            ><v-icon>check_box</v-icon>
+          </v-btn>
+        </div></v-col
+      >
+      <v-col cols="2" class="text-right ">
+        <p class="mb-0">Items per page</p>
       </v-col>
-      <v-col cols="2" align-self="end">
-        <v-btn small color="primary" depressed block
-          ><v-icon left>mdi-plus</v-icon>New Price</v-btn
-        >
+      <v-col cols="2" class="text-right ">
+        <v-select
+          :items="perPageOptions"
+          v-model="perPage"
+          hide-details
+          dense
+          solo
+        />
       </v-col>
-      <v-col cols="2" align-self="end">
-        <v-btn small color="primary" depressed block
-          ><v-icon left>mdi-filter</v-icon>Filter</v-btn
-        >
-      </v-col>
-      <v-col cols="3"></v-col>
-      <v-col cols="3">
+      <v-col cols="2">
         <v-text-field
           v-model="search"
           prepend-inner-icon="search"
@@ -56,9 +76,13 @@
 </template>
 
 <script>
+import { perPageOptions } from "@/utility/var.js";
+
 export default {
   data() {
     return {
+      perPageOptions,
+      perPage: "10",
       singleSelect: false,
       selected: [],
       search: "",
@@ -91,4 +115,6 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+@import "../../../../styles/page.scss";
+</style>

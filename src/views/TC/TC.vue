@@ -28,7 +28,7 @@ export default {
           icon: "mdi-view-dashboard",
           route: "",
           childrens: [
-            { title: "TCA", icon: "mdi-view-dashboard", route: "/tc/cogs/tca" },
+            { title: "TC", icon: "mdi-view-dashboard", route: "/tc/cogs/tca" },
             { title: "TCE", icon: "mdi-view-dashboard", route: "" },
             { title: "TCW", icon: "mdi-view-dashboard", route: "" },
             { title: "NDT", icon: "mdi-view-dashboard", route: "" },
@@ -41,19 +41,19 @@ export default {
           route: "",
           childrens: [
             {
-              title: "TCA",
+              title: "TC",
               icon: "mdi-receipt",
-              route: "/tc/price-simulation/tca"
+              route: "/tc/price-simulation/tc?type=a"
             },
             {
               title: "TCE",
               icon: "mdi-receipt",
-              route: "/tc/price-simulation/tca"
+              route: "/tc/price-simulation/tc?type=e"
             },
             {
               title: "TCW",
               icon: "mdi-receipt",
-              route: "/tc/price-simulation/tca"
+              route: "/tc/price-simulation/tc?type=w"
             },
             {
               title: "NDT",
