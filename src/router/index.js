@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import tcRoutes from "./tc";
+import tcRoutes from './tc';
+import tgRoutes from './tg';
 
 Vue.use(VueRouter);
 
@@ -25,8 +26,8 @@ const routes = [
   {
     path: "/tg",
     component: () => import(/* webpackChunkName: "TC" */ "../views/TG/TG.vue"),
-    // redirect: { name: "tg-cogs-tca" },
-    // children: tcRoutes,
+    redirect: { name: "tg-log-dashboard" },
+    children: tgRoutes,
   },
 ];
 

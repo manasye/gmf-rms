@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <v-breadcrumbs :items="items" />
+    <v-breadcrumbs :items="breadcrumbs" />
     <h1 class="page-title">New Item</h1>
     <v-form class="form">
       <v-row>
@@ -232,7 +232,7 @@
 export default {
   data() {
     return {
-      items: [
+      breadcrumbs: [
         {
           text: 'COGS',
           disabled: true,
