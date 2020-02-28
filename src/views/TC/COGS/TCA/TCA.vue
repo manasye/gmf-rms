@@ -46,35 +46,55 @@
         </v-btn>
       </div>
     </div>
-    <b-table
-      :items="items"
-      :fields="fields"
-      sticky-header
-      no-border-collapse
-      responsive
-      hover
-      striped
-    >
-      <template v-slot:cell(no)="row">
-        {{ row.index + 1 }}
-      </template>
-      <template v-slot:cell(actions)>
-        <v-btn color="rgb(240, 131, 8)" min-width="5" class="btn-table-action">
-          <v-icon color="white">close</v-icon>
-        </v-btn>
-        <v-btn color="#82B900" min-width="5" class="btn-table-action">
-          <v-icon color="white">edit</v-icon>
-        </v-btn>
-        <v-btn color="red" min-width="5" class="btn-table-action">
-          <v-icon color="white">close</v-icon>
-        </v-btn>
-      </template>
-      <template v-slot:head()="scope">
-        <div class="text-nowrap">
-          {{ scope.label }}
-        </div>
-      </template>
-    </b-table>
+    <div class="table-wrapper">
+      <b-table
+        id="table"
+        :items="items"
+        :fields="fields"
+        :per-page="perPage"
+        :current-page="currentPage"
+        no-border-collapse
+        responsive
+        hover
+        striped
+      >
+        <template v-slot:cell(actions)>
+          <v-btn color="rgb(240, 131, 8)" min-width="5" class="btn-table-action">
+            <v-icon color="white">close</v-icon>
+          </v-btn>
+          <v-btn color="#82B900" min-width="5" class="btn-table-action">
+            <v-icon color="white">edit</v-icon>
+          </v-btn>
+          <v-btn color="red" min-width="5" class="btn-table-action">
+            <v-icon color="white">close</v-icon>
+          </v-btn>
+        </template>
+        <template v-slot:head()="scope">
+          <div class="text-nowrap">
+            {{ scope.label }}
+          </div>
+        </template>
+      </b-table>
+    </div>
+    <div class="table-pagination">
+      <p class="pagination-info">
+        Showing {{ showedIndex.start }} to {{ showedIndex.end }} of {{ itemsLength }} entries
+      </p>
+      <b-pagination
+        v-model="currentPage"
+        :total-rows="itemsLength"
+        :per-page="perPage"
+        aria-controls="table"
+        align="right"
+        first-text="First"
+        last-text="Last"
+        prev-text="Previous"
+        next-text="Next"
+      >
+        <!-- <template v-slot:page="{ page, active }">
+        </template> -->
+      </b-pagination>
+    </div>
   </div>
 </template>
 
@@ -101,29 +121,12 @@ export default {
           disabled: false,
         },
       ],
-      items: [
-        {
-          id: '09249498-232323-2222',
-          partNumber: '300048-200',
-          description: 'AIR3100 Headset, AIR100L Headphone',
-          manufacturer: 'TELEX',
-          ata: 23,
-          dgca: 4,
-          faa: 0,
-        },
-        {
-          id: '09249498-232323-0000',
-          partNumber: '903-200',
-          description: 'Aviation Model 903E Microphone',
-          manufacturer: 'Electro Voice',
-          ata: 23,
-          dgca: 4,
-          faa: 4,
-        }
-      ],
+      items: [],
+      currentPage: 1,
+      perPage: 5,
       fields: [
         { key: 'actions', label: 'Actions', stickyColumn: true },
-        { key: 'no', sortable: true, isRowHeader: true },
+        { key: 'no', sortable: true },
         { key: 'partNumber', sortable: true },
         { key: 'description', sortable: true },
         { key: 'manufacturer', sortable: true },
@@ -137,10 +140,64 @@ export default {
     goToNewItem() {
       this.$router.push('/tc/cogs/tca/new');
     }
+  },
+  computed: {
+    itemsLength() {
+      return this.items.length;
+    },
+    showedIndex() {
+      let start = (this.currentPage - 1) * this.perPage + 1;
+      let end = start + this.perPage - 1;
+      return { start, end };
+    }
+  },
+  created() {
+    // For sample purposes, TODO: erase this
+    let obj = {
+      id: '09249498-232323-2222',
+      partNumber: '300048-200',
+      description: 'AIR3100 Headset, AIR100L Headphone',
+      manufacturer: 'TELEX',
+      ata: 23,
+      dgca: 4,
+      faa: 0,
+    };
+    for (let i=0; i<20; i++) {
+      this.items.push({
+        no: i + 1,
+        ...obj
+      });
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-@import '../../../../styles/page.scss';
+@import '@/styles/page.scss';
+@import '@/styles/_variables';
+
+.table-wrapper {
+  border: 1px solid #e2e2e2;
+  border-radius: 5px;
+  margin-bottom: 8px;
+}
+
+.page-item.active .page-link {
+  background: $green;
+}
+
+.v-application ul {
+  padding-left: 0;
+}
+
+.table-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .pagination-info {
+    font-size: 0.9rem;
+    color: gray;
+  }
+}
 </style>
