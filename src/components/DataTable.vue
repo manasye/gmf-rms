@@ -20,7 +20,11 @@
       </div>
       <div class="right">
         <div class="main-actions justify-content-start">
-          <v-btn color="#82B900" class="button" v-if="withFilter"
+          <v-btn
+            :color="filterSelected ? '#669903' : '#82B900'"
+            class="button"
+            v-if="withFilter"
+            @click="selectFilter"
             ><v-icon>mdi-filter</v-icon>
             <p>Filter</p></v-btn
           >
@@ -40,7 +44,7 @@
     <div class="table-wrapper mt-5">
       <b-table
         id="table"
-        :items="items"
+        :items="itemTables"
         :fields="fieldsLocal"
         :per-page="perPage"
         :current-page="currentPage"
@@ -48,20 +52,20 @@
         responsive
         hover
         striped
+        show-empty
       >
         <template v-slot:head(checked)>
           <v-checkbox
             class="mt-0 pt-0"
             hide-details
             light
-            @change="checkAll"
-            v-model="checked.every(c => c)"
+            v-model="selectAll"
           ></v-checkbox>
         </template>
         <template v-slot:cell(checked)="data">
           <v-checkbox
             class="mt-0 pt-0"
-            v-model="checked[data.index]"
+            v-model="checked.find(c => c.no === data.item.no).checked"
           ></v-checkbox
         ></template>
         <template v-slot:cell(actions)>
@@ -122,15 +126,23 @@ export default {
       itemsValues: [5, 10, 25, 50],
       fieldsDict: {},
       fieldsLocal: [],
-      checked: []
+      checked: [],
+      itemTables: [],
+      filterSelected: false
     };
   },
   components: {
     ViewTableColumn
   },
   created() {
+    this.itemTables = this.items;
     this.fieldsLocal = this.fields;
-    this.checked = Array(this.itemsLength).fill(false);
+    this.checked = this.items.map(i => {
+      return {
+        no: i.no,
+        checked: false
+      };
+    });
     this.fields.map((field, i) => {
       this.fieldsDict[field.key] = {
         idx: i,
@@ -147,6 +159,19 @@ export default {
       let end = start + this.perPage - 1;
       if (end > this.itemsLength) end = this.itemsLength;
       return { start, end };
+    },
+    selectAll: {
+      get: function() {
+        return this.itemTables === this.checked.filter(c => c.checked);
+      },
+      set: function(value) {
+        this.checked = this.itemTables.map(i => {
+          return {
+            no: i.no,
+            checked: value
+          };
+        });
+      }
     }
   },
   methods: {
@@ -165,10 +190,15 @@ export default {
       });
       this.fieldsLocal = fieldsLocal;
     },
-    checkAll() {
-      if (!this.checked.every(c => c))
-        this.checked = Array(this.itemsLength).fill(true);
-      else this.checked = Array(this.itemsLength).fill(false);
+    selectFilter() {
+      if (this.filterSelected) {
+        this.itemTables = this.items;
+      } else {
+        this.itemTables = this.items.filter(
+          item => this.checked.find(c => c.no === item.no).checked
+        );
+      }
+      this.filterSelected = !this.filterSelected;
     }
   }
 };
