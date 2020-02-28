@@ -70,7 +70,7 @@ export default {
   methods: {
     initValues() {
       this.fields.map(f => {
-        if (f.key !== "actions" && f.key !== "no") {
+        if (f.key !== "actions" && f.key !== "no" && f.key !== "checked") {
           this.values.push({
             key: f.key,
             label: f.label,
