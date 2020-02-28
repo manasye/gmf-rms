@@ -1,5 +1,6 @@
 <template>
-  <v-container>
+  <div class="page">
+    <v-breadcrumbs :items="items" />
     <h1 class="page-title text-uppercase">
       Pricing Simulation TC{{ $route.query.type }}
     </h1>
@@ -10,10 +11,7 @@
             ><v-icon>cloud_download</v-icon>
             <p>Download</p></v-btn
           >
-          <v-btn
-            color="#82B900"
-            class="button"
-            @click="$router.push('/tc/price-simulation/tc/new')"
+          <v-btn color="#82B900" class="button" @click="goToNewPage"
             ><v-icon>mdi-plus</v-icon>
             <p>New Price</p></v-btn
           >
@@ -67,12 +65,12 @@
 
     <b-table
       class="mt-3"
-      :items="items"
+      :items="prices"
       :fields="fields"
       responsive
       fixed
     ></b-table>
-  </v-container>
+  </div>
 </template>
 
 <script>
@@ -81,6 +79,15 @@ import { perPageOptions } from "@/utility/var.js";
 export default {
   data() {
     return {
+      items: [
+        {
+          text: "Price Simulation",
+          disabled: true
+        },
+        {
+          text: "TC" + this.$route.query.type.toUpperCase()
+        }
+      ],
       perPageOptions,
       perPage: "10",
       singleSelect: false,
@@ -101,7 +108,7 @@ export default {
           class: "stick-2"
         }
       ],
-      items: [
+      prices: [
         {
           id: 1,
           a:
@@ -111,6 +118,13 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    goToNewPage() {
+      this.$router.push(
+        "/tc/price-simulation/tc/new?type=" + this.$route.query.type
+      );
+    }
   }
 };
 </script>

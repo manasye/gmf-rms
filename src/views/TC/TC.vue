@@ -28,7 +28,7 @@ export default {
           icon: "mdi-view-dashboard",
           route: "",
           childrens: [
-            { title: "TC", icon: "mdi-view-dashboard", route: "/tc/cogs/tca" },
+            { title: "TCA", icon: "mdi-view-dashboard", route: "/tc/cogs/tca" },
             { title: "TCE", icon: "mdi-view-dashboard", route: "" },
             { title: "TCW", icon: "mdi-view-dashboard", route: "" },
             { title: "NDT", icon: "mdi-view-dashboard", route: "" },
@@ -41,7 +41,7 @@ export default {
           route: "",
           childrens: [
             {
-              title: "TC",
+              title: "TCA",
               icon: "mdi-receipt",
               route: "/tc/price-simulation/tc?type=a"
             },

@@ -8,23 +8,31 @@
           <v-text-field
             label="Part Number"
             placeholder="Fill here"
-            outlined required dense
+            outlined
+            required
+            dense
           />
           <v-textarea
             label="Description"
             placeholder="Fill here"
             height="100"
-            outlined required dense
+            outlined
+            required
+            dense
           />
           <v-text-field
             label="Manufacturer"
             placeholder="Fill here"
-            outlined required dense
+            outlined
+            required
+            dense
           />
           <v-text-field
             label="ATA"
             placeholder="Fill here"
-            outlined required dense
+            outlined
+            required
+            dense
           />
           <h2 class="form-section">Certification Level</h2>
           <v-row dense>
@@ -33,7 +41,9 @@
                 :items="select"
                 label="DCGA"
                 placeholder="Select here"
-                outlined required dense
+                outlined
+                required
+                dense
               />
             </v-col>
             <v-col>
@@ -41,7 +51,9 @@
                 :items="select"
                 label="FAA"
                 placeholder="Select here"
-                outlined required dense
+                outlined
+                required
+                dense
               />
             </v-col>
             <v-col>
@@ -49,7 +61,9 @@
                 :items="select"
                 label="EASA"
                 placeholder="Select here"
-                outlined required dense
+                outlined
+                required
+                dense
               />
             </v-col>
           </v-row>
@@ -57,19 +71,25 @@
             :items="select"
             label="Shop"
             placeholder="Select here"
-            outlined required dense
+            outlined
+            required
+            dense
           />
           <v-select
             :items="select"
             label="Tool / Equipment"
             placeholder="Select here"
-            outlined required dense
+            outlined
+            required
+            dense
           />
           <v-select
             :items="select"
             label="Category"
             placeholder="Select here"
-            outlined required dense
+            outlined
+            required
+            dense
           />
         </v-col>
         <v-col cols="12" lg="4" md="4" sm="12">
@@ -79,21 +99,27 @@
             placeholder="Fill here"
             suffix="days"
             type="number"
-            outlined required dense
+            outlined
+            required
+            dense
           />
           <v-text-field
             label="Repair"
             placeholder="Fill here"
             suffix="days"
             type="number"
-            outlined required dense
+            outlined
+            required
+            dense
           />
           <v-text-field
             label="Overhaul"
             placeholder="Fill here"
             suffix="days"
             type="number"
-            outlined required dense
+            outlined
+            required
+            dense
           />
           <h2 class="form-section">Man Hours Per Task</h2>
           <v-row dense>
@@ -101,21 +127,27 @@
               <v-text-field
                 label="PI"
                 placeholder="Fill here"
-                outlined required dense
+                outlined
+                required
+                dense
               />
             </v-col>
             <v-col>
               <v-text-field
                 label="Test"
                 placeholder="Fill here"
-                outlined required dense
+                outlined
+                required
+                dense
               />
             </v-col>
             <v-col>
               <v-text-field
                 label="Repair"
                 placeholder="Fill here"
-                outlined required dense
+                outlined
+                required
+                dense
               />
             </v-col>
           </v-row>
@@ -124,26 +156,34 @@
               <v-text-field
                 label="Overhaul"
                 placeholder="Fill here"
-                outlined required dense
+                outlined
+                required
+                dense
               />
             </v-col>
             <v-col>
               <v-text-field
                 label="RTS"
                 placeholder="Fill here"
-                outlined required dense
+                outlined
+                required
+                dense
               />
             </v-col>
           </v-row>
           <v-text-field
             label="Labour Rate"
             placeholder="Fill here"
-            outlined required dense
+            outlined
+            required
+            dense
           />
           <v-text-field
             label="Machine Rate"
             placeholder="Fill here"
-            outlined required dense
+            outlined
+            required
+            dense
           />
         </v-col>
         <v-col cols="12" lg="4" md="4" sm="12">
@@ -155,7 +195,9 @@
                 label="Test"
                 value="Auto"
                 placeholder="Fill here"
-                outlined required dense
+                outlined
+                required
+                dense
               />
             </v-col>
             <v-col>
@@ -164,7 +206,9 @@
                 label="Repair"
                 value="Auto"
                 placeholder="Fill here"
-                outlined required dense
+                outlined
+                required
+                dense
               />
             </v-col>
             <v-col>
@@ -173,7 +217,9 @@
                 label="Overhaul"
                 value="Auto"
                 placeholder="Fill here"
-                outlined required dense
+                outlined
+                required
+                dense
               />
             </v-col>
           </v-row>
@@ -185,7 +231,9 @@
                 label="Test"
                 value="Auto"
                 placeholder="Fill here"
-                outlined required dense
+                outlined
+                required
+                dense
               />
             </v-col>
             <v-col>
@@ -194,7 +242,9 @@
                 label="Repair"
                 value="Auto"
                 placeholder="Fill here"
-                outlined required dense
+                outlined
+                required
+                dense
               />
             </v-col>
             <v-col>
@@ -203,7 +253,9 @@
                 label="Overhaul"
                 value="Auto"
                 placeholder="Fill here"
-                outlined required dense
+                outlined
+                required
+                dense
               />
             </v-col>
           </v-row>
@@ -211,12 +263,16 @@
           <v-text-field
             label="Repair"
             placeholder="Fill here"
-            outlined required dense
+            outlined
+            required
+            dense
           />
           <v-text-field
             label="Overhaul"
             placeholder="Fill here"
-            outlined required dense
+            outlined
+            required
+            dense
           />
           <div class="form-action">
             <v-btn color="#82B900" class="button">Submit</v-btn>
@@ -234,56 +290,27 @@ export default {
     return {
       items: [
         {
-          text: 'COGS',
-          disabled: true,
+          text: "COGS",
+          disabled: true
         },
         {
-          text: 'TCA',
-          disabled: true,
+          text: "TCA",
+          disabled: true
           // href: '/tc/cogs/tca',
         },
         {
-          text: 'New Item',
-          disabled: false,
-        },
+          text: "New Item",
+          disabled: false
+        }
       ],
-      select: ['Foo', 'Bar', 'Fizz', 'Buzz'],
-    }
+      select: ["Foo", "Bar", "Fizz", "Buzz"]
+    };
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/_variables';
-@import '@/styles/page.scss';
-
-.form {
-  margin-top: 10px;
-}
-
-.form-input {
-  display: flex;
-  flex-direction: row;
-}
-
-.form-input > .label {
-  margin-bottom: 0;
-}
-
-.form-section {
-  color: $green;
-  font-size: 1.25rem;
-  margin-bottom: 15px;
-}
-
-.form-action {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}
-
-.form-action > .button {
-  color: white;
-  margin-left: 8px;
-}
+@import "@/styles/_variables";
+@import "@/styles/page.scss";
+@import "@/styles/form.scss";
 </style>

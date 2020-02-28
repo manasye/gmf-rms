@@ -1,0 +1,29 @@
+.form {
+  margin-top: 10px;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: row;
+}
+
+.form-input > .label {
+  margin-bottom: 0;
+}
+
+.form-section {
+  color: $green;
+  font-size: 1.25rem;
+  margin-bottom: 15px;
+}
+
+.form-action {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.form-action > .button {
+  color: white;
+  margin-left: 8px;
+}
