@@ -6,10 +6,10 @@
 
 <script>
 export default {
-  name: "App",
+  name: "App"
 };
 </script>
 
 <style lang="scss">
-@import '@/styles/global';
+@import "@/styles/global";
 </style>

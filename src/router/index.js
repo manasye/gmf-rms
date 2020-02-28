@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import tcRoutes from './tc';
+import tcRoutes from "./tc";
 
 Vue.use(VueRouter);
 

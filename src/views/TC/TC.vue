@@ -5,9 +5,7 @@
       v-if="$route.name !== 'login' && $route.name !== 'role'"
     ></navbar>
     <div>
-      <toolbar
-        v-if="$route.name !== 'login' && $route.name !== 'role'"
-      />
+      <toolbar v-if="$route.name !== 'login' && $route.name !== 'role'" />
       <router-view />
     </div>
   </v-content>
@@ -20,7 +18,7 @@ import Toolbar from "@/components/Toolbar.vue";
 export default {
   components: {
     Navbar,
-    Toolbar,
+    Toolbar
   },
   data() {
     return {
@@ -42,11 +40,31 @@ export default {
           icon: "mdi-receipt",
           route: "",
           childrens: [
-            { title: "TCA", icon: "mdi-receipt", route: "" },
-            { title: "TCE", icon: "mdi-receipt", route: "" },
-            { title: "TCW", icon: "mdi-receipt", route: "" },
-            { title: "NDT", icon: "mdi-receipt", route: "" },
-            { title: "Calibration", icon: "mdi-receipt", route: "" }
+            {
+              title: "TCA",
+              icon: "mdi-receipt",
+              route: "/tc/price-simulation/tca"
+            },
+            {
+              title: "TCE",
+              icon: "mdi-receipt",
+              route: "/tc/price-simulation/tca"
+            },
+            {
+              title: "TCW",
+              icon: "mdi-receipt",
+              route: "/tc/price-simulation/tca"
+            },
+            {
+              title: "NDT",
+              icon: "mdi-receipt",
+              route: "/tc/price-simulation/ndt"
+            },
+            {
+              title: "Calibration",
+              icon: "mdi-receipt",
+              route: "/tc/price-simulation/calibration"
+            }
           ]
         },
         { title: "User Management", icon: "mdi-account-circle", route: "" },
@@ -54,9 +72,7 @@ export default {
       ]
     };
   }
-}
+};
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>
