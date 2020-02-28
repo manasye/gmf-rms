@@ -1,8 +1,5 @@
 <template>
-  <v-dialog
-    v-model="dialog"
-    max-width="700px"
-  >
+  <v-dialog v-model="dialog" max-width="700px">
     <v-card class="card">
       <p class="header">
         <v-icon>view_list</v-icon>
@@ -58,13 +55,13 @@
 
 <script>
 export default {
-  props: ['visible', 'fields'],
+  props: ["visible", "fields"],
   data() {
     return {
       dialog: false,
       selectAll: false,
-      values: [],
-    }
+      values: []
+    };
   },
   created() {
     this.dialog = this.visible;
@@ -73,17 +70,17 @@ export default {
   methods: {
     initValues() {
       this.fields.map(f => {
-        if (f.key !== 'actions' && f.key !== 'no') {
+        if (f.key !== "actions" && f.key !== "no") {
           this.values.push({
             key: f.key,
             label: f.label,
-            value: true,
+            value: true
           });
         }
       });
     },
     submit() {
-      this.$emit('onsubmit', this.values);
+      this.$emit("onsubmit", this.values);
       this.dialog = false;
     }
   },
@@ -104,7 +101,7 @@ export default {
       if (newVal) this.dialog = newVal;
     },
     dialog(newVal, oldVal) {
-      if (!newVal) this.$emit('onclose');
+      if (!newVal) this.$emit("onclose");
     },
     values: {
       deep: true,
@@ -116,12 +113,12 @@ export default {
         this.selectAll = val;
       }
     }
-  },
-}
+  }
+};
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/_variables';
+@import "@/styles/_variables";
 
 .card {
   padding: 18px 14px;
@@ -129,7 +126,9 @@ export default {
 
 .header {
   color: $blue;
-  * { color: $blue; }
+  * {
+    color: $blue;
+  }
   font-size: 1.2rem;
   font-weight: 600;
 }

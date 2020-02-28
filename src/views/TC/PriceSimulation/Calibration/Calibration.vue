@@ -3,16 +3,12 @@
     <v-breadcrumbs :items="bcItems" />
     <div class="page-header">
       <h1 class="page-title text-uppercase">
-        Pricing Simulation TC{{ $route.query.type }}
+        Pricing Simulation Calibration
       </h1>
       <div class="main-actions">
         <v-btn color="#82B900" class="button">
           <v-icon>cloud_download</v-icon>
           <p>Download</p>
-        </v-btn>
-        <v-btn color="#82B900" class="button" @click="goToNewPage">
-          <v-icon>add</v-icon>
-          <p>New Price</p>
         </v-btn>
       </div>
     </div>
@@ -35,11 +31,9 @@ export default {
           disabled: true
         },
         {
-          text: "TC" + this.$route.query.type.toUpperCase()
+          text: "Calibration"
         }
       ],
-      singleSelect: false,
-      selected: [],
       search: "",
       items: [],
       fields: [
@@ -70,17 +64,9 @@ export default {
       ]
     };
   },
-  methods: {
-    goToNewPage() {
-      this.$router.push(
-        "/tc/price-simulation/tc/new?type=" + this.$route.query.type
-      );
-    }
-  },
   created() {
     // For sample purposes, TODO: erase this
     let obj = {
-      checked: true,
       id: "09249498-232323-2222",
       partNumber: "300048-200",
       description: "AIR3100 Headset, AIR100L Headphone",
@@ -105,6 +91,6 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-@import "../../../../styles/page.scss";
+<style lang="scss" scoped>
+@import "@/styles/page.scss";
 </style>

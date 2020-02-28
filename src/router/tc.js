@@ -28,7 +28,15 @@ export default [
         name: "tc-price-simulation-ndt",
         component: () =>
           import(
-            /* webpackChunkName: "tc-price-simulation-calibration" */ "../views/TC/PriceSimulation/Calibration.vue"
+            /* webpackChunkName: "tc-price-simulation-ndt" */ "../views/TC/PriceSimulation/NDT/NDT.vue"
+          )
+      },
+      {
+        path: "ndt/:id",
+        name: "tc-price-simulation-ndt-detail",
+        component: () =>
+          import(
+            /* webpackChunkName: "tc-price-simulation-ndt-detail */ "../views/TC/PriceSimulation/NDT/Detail.vue"
           )
       },
       {
@@ -36,7 +44,15 @@ export default [
         name: "tc-price-simulation-calibration",
         component: () =>
           import(
-            /* webpackChunkName: "tc-price-simulation-c" */ "../views/TC/PriceSimulation/NDT.vue"
+            /* webpackChunkName: "tc-price-simulation-calibration" */ "../views/TC/PriceSimulation/Calibration/Calibration.vue"
+          )
+      },
+      {
+        path: "calibration/:id",
+        name: "tc-price-simulation-calibration-detail",
+        component: () =>
+          import(
+            /* webpackChunkName: "tc-price-simulation-calibration-detail" */ "../views/TC/PriceSimulation/Calibration/Detail.vue"
           )
       }
     ]

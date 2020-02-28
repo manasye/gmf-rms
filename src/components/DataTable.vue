@@ -19,19 +19,25 @@
         />
       </div>
       <div class="right">
-        <v-btn
-          color="#82B900"
-          class="button"
-          @click="viewColumn = !viewColumn"
-        >
-          <v-icon>view_list</v-icon>
-        </v-btn>
-        <v-btn color="#82B900" class="button">
-          <v-icon>search</v-icon>
-        </v-btn>
+        <div class="main-actions justify-content-start">
+          <v-btn color="#82B900" class="button" v-if="withFilter"
+            ><v-icon>mdi-filter</v-icon>
+            <p>Filter</p></v-btn
+          >
+          <v-btn
+            color="#82B900"
+            class="button"
+            @click="viewColumn = !viewColumn"
+          >
+            <v-icon>view_list</v-icon>
+          </v-btn>
+          <v-btn color="#82B900" class="button">
+            <v-icon>search</v-icon>
+          </v-btn>
+        </div>
       </div>
     </div>
-    <div class="table-wrapper">
+    <div class="table-wrapper mt-5">
       <b-table
         id="table"
         :items="items"
@@ -43,16 +49,36 @@
         hover
         striped
       >
+        <template v-slot:head(checked)>
+          <v-checkbox
+            class="mt-0 pt-0"
+            hide-details
+            light
+            @change="checkAll"
+            v-model="checked.every(c => c)"
+          ></v-checkbox>
+        </template>
+        <template v-slot:cell(checked)="data">
+          <v-checkbox
+            class="mt-0 pt-0"
+            v-model="checked[data.index]"
+          ></v-checkbox
+        ></template>
         <template v-slot:cell(actions)>
           <v-row dense>
-            <v-btn small color="rgb(240, 131, 8)" min-width="5" class="btn-table-action">
-              <v-icon color="white">close</v-icon>
+            <v-btn
+              small
+              color="rgb(240, 131, 8)"
+              min-width="5"
+              class="btn-table-action"
+            >
+              <v-icon color="white" small>close</v-icon>
             </v-btn>
             <v-btn small color="#82B900" min-width="5" class="btn-table-action">
-              <v-icon color="white">edit</v-icon>
+              <v-icon color="white" small>edit</v-icon>
             </v-btn>
             <v-btn small color="red" min-width="5" class="btn-table-action">
-              <v-icon color="white">close</v-icon>
+              <v-icon color="white" small>close</v-icon>
             </v-btn>
           </v-row>
         </template>
@@ -63,9 +89,10 @@
         </template>
       </b-table>
     </div>
-    <div class="table-pagination">
+    <div class="table-pagination mt-5 mb-4">
       <p class="pagination-info">
-        Showing {{ showedIndex.start }} to {{ showedIndex.end }} of {{ itemsLength }} entries
+        Showing {{ showedIndex.start }} to {{ showedIndex.end }} of
+        {{ itemsLength }} entries
       </p>
       <b-pagination
         v-model="currentPage"
@@ -75,7 +102,7 @@
         align="right"
         first-text="First"
         last-text="Last"
-        prev-text="Previous"
+        prev-text="Prev"
         next-text="Next"
       />
     </div>
@@ -83,33 +110,33 @@
 </template>
 
 <script>
-import ViewTableColumn from './ViewTableColumn';
+import ViewTableColumn from "./ViewTableColumn";
 
 export default {
-  props: ['items', 'fields'],
+  props: ["items", "fields", "withFilter"],
   data() {
     return {
       viewColumn: false,
       currentPage: 1,
       perPage: 5,
-      itemsValues: [
-        5, 10, 25, 50,
-      ],
+      itemsValues: [5, 10, 25, 50],
       fieldsDict: {},
       fieldsLocal: [],
+      checked: []
     };
   },
   components: {
-    ViewTableColumn,
+    ViewTableColumn
   },
   created() {
     this.fieldsLocal = this.fields;
+    this.checked = Array(this.itemsLength).fill(false);
     this.fields.map((field, i) => {
       this.fieldsDict[field.key] = {
         idx: i,
-        data: field,
-      }
-    })
+        data: field
+      };
+    });
   },
   computed: {
     itemsLength() {
@@ -125,11 +152,11 @@ export default {
   methods: {
     setFieldsLocal(val) {
       let fieldsLocal = [];
-      if (this.fieldsDict['actions']) {
-        fieldsLocal.push(this.fieldsDict['actions'].data);
+      if (this.fieldsDict["actions"]) {
+        fieldsLocal.push(this.fieldsDict["actions"].data);
       }
-      if (this.fieldsDict['no']) {
-        fieldsLocal.push(this.fieldsDict['no'].data);
+      if (this.fieldsDict["no"]) {
+        fieldsLocal.push(this.fieldsDict["no"].data);
       }
       val.map(v => {
         if (v.value) {
@@ -137,14 +164,19 @@ export default {
         }
       });
       this.fieldsLocal = fieldsLocal;
+    },
+    checkAll() {
+      if (!this.checked.every(c => c))
+        this.checked = Array(this.itemsLength).fill(true);
+      else this.checked = Array(this.itemsLength).fill(false);
     }
   }
-}
+};
 </script>
 
 <style lang="scss">
-@import '@/styles/page';
-@import '@/styles/_variables';
+@import "@/styles/page";
+@import "@/styles/_variables";
 
 .btn-table-action {
   margin-right: 5px;
