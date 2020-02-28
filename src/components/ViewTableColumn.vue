@@ -75,14 +75,15 @@ export default {
       this.fields.map(f => {
         if (f.key !== 'actions' && f.key !== 'no') {
           this.values.push({
+            key: f.key,
             label: f.label,
-            value: false,
+            value: true,
           });
         }
       });
     },
     submit() {
-      this.$emit('values', this.values);
+      this.$emit('onsubmit', this.values);
       this.dialog = false;
     }
   },

@@ -4,6 +4,7 @@
       :fields="fields"
       :visible="viewColumn"
       @onclose="viewColumn = false"
+      @onsubmit="setFieldsLocal"
     />
     <div class="table-actions">
       <div class="left">
@@ -34,7 +35,7 @@
       <b-table
         id="table"
         :items="items"
-        :fields="fields"
+        :fields="fieldsLocal"
         :per-page="perPage"
         :current-page="currentPage"
         no-border-collapse
@@ -44,13 +45,13 @@
       >
         <template v-slot:cell(actions)>
           <v-row dense>
-            <v-btn color="rgb(240, 131, 8)" min-width="5" class="btn-table-action">
+            <v-btn small color="rgb(240, 131, 8)" min-width="5" class="btn-table-action">
               <v-icon color="white">close</v-icon>
             </v-btn>
-            <v-btn color="#82B900" min-width="5" class="btn-table-action">
+            <v-btn small color="#82B900" min-width="5" class="btn-table-action">
               <v-icon color="white">edit</v-icon>
             </v-btn>
-            <v-btn color="red" min-width="5" class="btn-table-action">
+            <v-btn small color="red" min-width="5" class="btn-table-action">
               <v-icon color="white">close</v-icon>
             </v-btn>
           </v-row>
@@ -94,10 +95,21 @@ export default {
       itemsValues: [
         5, 10, 25, 50,
       ],
+      fieldsDict: {},
+      fieldsLocal: [],
     };
   },
   components: {
     ViewTableColumn,
+  },
+  created() {
+    this.fieldsLocal = this.fields;
+    this.fields.map((field, i) => {
+      this.fieldsDict[field.key] = {
+        idx: i,
+        data: field,
+      }
+    })
   },
   computed: {
     itemsLength() {
@@ -110,6 +122,23 @@ export default {
       return { start, end };
     }
   },
+  methods: {
+    setFieldsLocal(val) {
+      let fieldsLocal = [];
+      if (this.fieldsDict['actions']) {
+        fieldsLocal.push(this.fieldsDict['actions'].data);
+      }
+      if (this.fieldsDict['no']) {
+        fieldsLocal.push(this.fieldsDict['no'].data);
+      }
+      val.map(v => {
+        if (v.value) {
+          fieldsLocal.push(this.fieldsDict[v.key].data);
+        }
+      });
+      this.fieldsLocal = fieldsLocal;
+    }
+  }
 }
 </script>
 
@@ -129,7 +158,7 @@ export default {
 }
 
 .table-action {
-  min-width: 200px;
+  min-width: 180px;
 }
 
 .v-application ul {
