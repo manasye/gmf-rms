@@ -43,17 +43,17 @@ export default {
             {
               title: "TCA",
               icon: "mdi-receipt",
-              route: "/tc/price-simulation/tca"
+              route: "/tc/price-simulation/tc?type=a"
             },
             {
               title: "TCE",
               icon: "mdi-receipt",
-              route: "/tc/price-simulation/tca"
+              route: "/tc/price-simulation/tc?type=e"
             },
             {
               title: "TCW",
               icon: "mdi-receipt",
-              route: "/tc/price-simulation/tca"
+              route: "/tc/price-simulation/tc?type=w"
             },
             {
               title: "NDT",

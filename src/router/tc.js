@@ -5,14 +5,22 @@ export default [
       import(
         /* webpackChunkName: "tc-price-simulation" */ "../views/EmptyRouter"
       ),
-    redirect: { name: "tc-price-simulation-tca" },
+    redirect: { name: "tc-price-simulation-tc" },
     children: [
       {
-        path: "tca",
-        name: "tc-price-simulation-tca",
+        path: "tc",
+        name: "tc-price-simulation-tc",
         component: () =>
           import(
-            /* webpackChunkName: "tc-price-simulation-tc" */ "../views/TC/PriceSimulation/AllTC.vue"
+            /* webpackChunkName: "tc-price-simulation-tc" */ "../views/TC/PriceSimulation/TC/AllTC.vue"
+          )
+      },
+      {
+        path: "tc/new",
+        name: "tc-price-simulation-tc-new",
+        component: () =>
+          import(
+            /* webpackChunkName: "tc-price-simulation-tc-new" */ "../views/TC/PriceSimulation/TC/NewItem.vue"
           )
       },
       {
