@@ -58,79 +58,29 @@
 
 <script>
 export default {
-  props: ['visible'],
+  props: ['visible', 'fields'],
   data() {
     return {
       dialog: false,
       selectAll: false,
-      values: [
-        {
-          label: 'Part Number',
-          value: false,
-        },
-        {
-          label: 'ATA',
-          value: false,
-        },
-        {
-          label: 'Description',
-          value: false,
-        },
-        {
-          label: 'Aircraft Type',
-          value: false,
-        },
-        {
-          label: 'Shop',
-          value: false,
-        },
-        {
-          label: 'Cap Level DGCA',
-          value: false,
-        },
-        {
-          label: 'Standard Man Hours (Hour)',
-          value: false,
-        },
-        {
-          label: 'Direct Expense Per Hour',
-          value: false,
-        },
-        {
-          label: 'Alloc. Cost',
-          value: false,
-        },
-        {
-          label: 'Total Labout Cost TC',
-          value: false,
-        },
-        {
-          label: 'Machine Rate',
-          value: false,
-        },
-        {
-          label: 'Net Profit',
-          value: false,
-        },
-        {
-          label: 'STD Man Hours',
-          value: false,
-        },
-        {
-          label: 'STD MHRS',
-          value: false,
-        },
-        {
-          label: 'COGS + Net Profit (Labor Only)',
-          value: false,
-        },
-      ]
+      values: [],
     }
   },
   created() {
     this.dialog = this.visible;
+    this.initValues();
   },
   methods: {
+    initValues() {
+      this.fields.map(f => {
+        if (f.key !== 'actions' && f.key !== 'no') {
+          this.values.push({
+            label: f.label,
+            value: false,
+          });
+        }
+      });
+    },
     submit() {
       this.$emit('values', this.values);
       this.dialog = false;
