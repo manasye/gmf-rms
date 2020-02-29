@@ -80,5 +80,12 @@ export default [
           )
       }
     ]
+  },
+  {
+    path: "user-management",
+    component: () =>
+      import(
+        /* webpackChunkName: "tc-user-management" */ "../views/EmptyRouter.vue"
+      )
   }
 ];

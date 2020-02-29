@@ -67,7 +67,8 @@ export default {
         },
         { key: "directExpense", label: "Direct Expense", sortable: true },
         { key: "cost", label: "Alloc. Cost", sortable: true }
-      ]
+      ],
+      type: ""
     };
   },
   methods: {
@@ -75,6 +76,19 @@ export default {
       this.$router.push(
         "/tc/price-simulation/tc/new?type=" + this.$route.query.type
       );
+    }
+  },
+  watch: {
+    $route() {
+      this.bcItems = [
+        {
+          text: "Price Simulation",
+          disabled: true
+        },
+        {
+          text: "TC" + this.$route.query.type.toUpperCase()
+        }
+      ];
     }
   },
   created() {

@@ -67,7 +67,7 @@ export default {
             }
           ]
         },
-        { title: "User Management", icon: "mdi-account-circle", route: "" },
+        { title: "User Management", icon: "mdi-account-circle", route: "/tc/user-management" },
         { title: "Log Out", icon: "mdi-power", route: "/logout" }
       ]
     };

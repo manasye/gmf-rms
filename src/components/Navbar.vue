@@ -5,26 +5,17 @@
 
     <v-list dense nav>
       <template v-for="item in items">
-        <v-list-item
-          link
-          :key="item.title"
-          v-if="!item.childrens"
-          @click="goToRoute(item.route)"
-        >
-          <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-icon>
-
-          <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-
         <v-list-group
           :prepend-icon="item.icon"
-          active-class="navbar-nested"
           :key="item.title"
-          v-else
+          :style="
+            activeRoute === item.route
+              ? 'background-color: #83be00 !important; border-radius: 4px'
+              : ''
+          "
+          :active-class="!item.childrens ? 'navbar-active' : 'navbar-inactive'"
+          :append-icon="item.childrens ? 'keyboard_arrow_down' : ''"
+          @click="!item.childrens && goToRoute(item.route)"
         >
           <template v-slot:activator>
             <v-list-item-title>{{ item.title }}</v-list-item-title>
@@ -34,8 +25,8 @@
             v-for="(child, i) in item.childrens"
             :key="i"
             link
-            class="ml-4"
             @click="goToRoute(child.route)"
+            :class="activeRoute === child.route ? 'pl-4 navbar-active' : 'pl-4'"
           >
             <v-list-item-icon>
               <v-icon v-text="child.icon"></v-icon>
@@ -51,16 +42,34 @@
 <script>
 export default {
   props: ["items"],
+  mounted() {
+    this.activeRoute = this.$router.currentRoute.fullPath;
+  },
+  data() {
+    return {
+      activeRoute: ""
+    };
+  },
   methods: {
     goToRoute(route) {
       this.$router.push(route);
+    }
+  },
+  watch: {
+    $route() {
+      this.activeRoute = this.$router.currentRoute.fullPath;
     }
   }
 };
 </script>
 
 <style>
-.navbar-nested {
+.navbar-active {
+  color: white !important;
+  background-color: #83be00 !important;
+  border-radius: 4px;
+}
+.navbar-inactive {
   color: white !important;
 }
 .v-list-item__icon {

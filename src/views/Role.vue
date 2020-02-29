@@ -18,8 +18,8 @@
         >
           <v-icon color="#fff" class="mb-3 logo">account_box</v-icon>
           <h2 class="mb-3">{{ r.code }}</h2>
-          <h5>{{ r.name }}</h5></v-col
-        >
+          <h5>{{ r.name }}</h5>
+        </v-col>
       </v-row>
       <p class="mt-10">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, veniam.
@@ -34,7 +34,11 @@ export default {
     return {
       roles: [
         { code: "TC", name: "COMPONENT SERVICES", route: "/tc" },
-        { code: "TG", name: "LOGISTIC, BONDED & MATERIAL SERVICES", route: "/tg" },
+        {
+          code: "TG",
+          name: "LOGISTIC, BONDED & MATERIAL SERVICES",
+          route: "/tg"
+        },
         { code: "TB", name: "WIDE BODY BASE MAINTENANCE", route: "/tc" },
         { code: "TJ", name: "NARROW BODY BASE MAINTENANCE", route: "/tc" }
       ]
