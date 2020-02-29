@@ -31,7 +31,7 @@ export default {
             { title: "TCA", icon: "mdi-view-dashboard", route: "/tc/cogs/tca" },
             { title: "TCE", icon: "mdi-view-dashboard", route: "" },
             { title: "TCW", icon: "mdi-view-dashboard", route: "" },
-            { title: "NDT", icon: "mdi-view-dashboard", route: "" },
+            { title: "NDT", icon: "mdi-view-dashboard", route: "/tc/cogs/ndt" },
             { title: "Calibration", icon: "mdi-view-dashboard", route: "" }
           ]
         },

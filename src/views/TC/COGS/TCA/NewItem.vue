@@ -295,8 +295,8 @@ export default {
         },
         {
           text: "TCA",
-          disabled: true
-          // href: '/tc/cogs/tca',
+          disabled: false,
+          href: "/#/tc/cogs/tca"
         },
         {
           text: "New Item",

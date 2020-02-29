@@ -78,7 +78,15 @@ export default [
           import(
             /* webpackChunkName: "tc-cogs-tca-new" */ "../views/TC/COGS/TCA/NewItem.vue"
           )
-      }
+      },
+      {
+        path: "ndt",
+        name: "tc-cogs-ndt",
+        component: () =>
+          import(
+            /* webpackChunkName: "tc-cogs-ndt" */ "../views/TC/COGS/NDT/NDT.vue"
+          )
+      },
     ]
   }
 ];
