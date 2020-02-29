@@ -66,7 +66,7 @@ export default {
   },
   methods: {
     goToNewItem() {
-      this.$router.push('/tc/cogs/tca/new');
+      this.$router.push('/tc/cogs/ndt/new');
     }
   },
   created() {
