@@ -187,7 +187,7 @@
           />
         </v-col>
         <v-col cols="12" lg="4" md="4" sm="12">
-          <h2 class="form-section">Standard Man Hourse</h2>
+          <h2 class="form-section">Standard Man Hours</h2>
           <v-row dense>
             <v-col>
               <v-text-field
@@ -295,8 +295,8 @@ export default {
         },
         {
           text: "TCA",
-          disabled: true
-          // href: '/tc/cogs/tca',
+          disabled: false,
+          href: "/#/tc/cogs/tca"
         },
         {
           text: "New Item",
