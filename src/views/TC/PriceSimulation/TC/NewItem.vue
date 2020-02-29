@@ -240,6 +240,59 @@
       <v-btn color="#82B900" class="button">Submit</v-btn>
       <v-btn color="grey" class="button">Cancel</v-btn>
     </div>
+
+    <v-dialog v-model="showModalMarketPrice" width="500"
+      ><v-card>
+        <v-card-title class="headline primary white--text" primary-title>
+          Market Price
+        </v-card-title>
+
+        <v-card-text class="mt-3">
+          <v-row>
+            <v-col cols="5" class="pt-1 pb-1">
+              <h6 class="blue--text mb-0">PN</h6>
+            </v-col>
+            <v-col cols="7" class="pt-1 pb-1">a</v-col>
+            <v-col cols="5" class="pt-1 pb-1">
+              <h6 class="blue--text mb-0">Description</h6>
+            </v-col>
+            <v-col cols="7" class="pt-1 pb-1">a</v-col>
+          </v-row>
+
+          <h2 class="mt-2 mb-2 form-section">Test</h2>
+          <v-row>
+            <v-col cols="5" class="pt-0 pb-0">
+              <p class="mb-0">Market Price</p>
+            </v-col>
+            <v-col cols="7" class="pt-0 pb-0">a</v-col>
+          </v-row>
+
+          <h2 class="mt-2 mb-2 form-section">Repair</h2>
+          <v-row>
+            <v-col cols="5" class="pt-0 pb-0">
+              <p class="mb-0">Market Price (Mhrs Pckg)</p>
+            </v-col>
+            <v-col cols="7" class="pt-0 pb-0">a</v-col>
+            <v-col cols="5" class="pt-2 pb-2">
+              <p class="mb-0">Market Price (Fixed Price)</p>
+            </v-col>
+            <v-col cols="7" class="pt-2 pb-2">a</v-col></v-row
+          >
+
+          <h2 class="mt-1 mb-2 form-section">Overhaul</h2>
+          <v-row>
+            <v-col cols="5" class="pt-0 pb-0">
+              <p class="mb-0">Market Price (Mhrs Pckg)</p>
+            </v-col>
+            <v-col cols="7" class="pt-0 pb-0">a</v-col>
+            <v-col cols="5" class="pt-2 pb-2">
+              <p class="mb-0">Market Price (Fixed Price)</p>
+            </v-col>
+            <v-col cols="7" class="pt-2 pb-2">a</v-col></v-row
+          >
+        </v-card-text>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
